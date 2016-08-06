@@ -18,7 +18,7 @@ const NeuralNetwork = require("../3layer.js");
 let NN = NeuralNetwork(2, 7, 1, 0.6);
 
 
-/**
+/*
  * Here we define our inputs.
  * There are only 4 possible combinations,
  * so it is rather easy.
@@ -33,7 +33,7 @@ let inputs = [
 ];
 
 
-/**
+/*
  * We will give the network 10000 * 4 examples
  * to train on.
  * Note that it is best to alternate the inputs that we give to the network
@@ -46,8 +46,15 @@ for (let i = 0; i < 10000; i++) {
 }
 
 
-/**
- * Time to see how well we trained the network
+/*
+ * Time to see how well we trained the network..
+ * The result should look like this:
+ *
+ * Testing the neural network...
+ * input: [ 1, 1 ] | output: [ 0.007655196970540926 ]
+ * input: [ 1, 0 ] | output: [ 0.9918757893434477 ]
+ * input: [ 0, 1 ] | output: [ 0.9925807646447175 ]
+ * input: [ 1, 1 ] | output: [ 0.007655196970540926 ]
  *
  */
 console.log("Testing the neural network...");
@@ -56,7 +63,7 @@ for(let i = 0; i < inputs.length; i++) {
 }
 
 
-/**
+/*
  * Optionally we can save the weights
  * so that the progress we made is not lost.
  */
