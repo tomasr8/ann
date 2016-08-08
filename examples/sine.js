@@ -27,9 +27,9 @@ let rnd = Random(123);
  * (This training might take a while)
  *
  */
-for(let i = 0; i < 1000000; i++) {
+for(let i = 0; i < 100000; i++) {
   const x = rnd.next(-Math.PI, Math.PI);
-  NN.train({ input: [x], expected: [normalize(Math.sin(x))] });
+  NN.train({ input: x, expected: normalize(Math.sin(x)) });
 }
 
 
@@ -63,23 +63,23 @@ function revert(x) {
  * When the training is done you should see something like this:
  *
  * Testing the neural network...
- * input: 1.117 | expected: 0.899 | actual: 0.9135746239351616
- * input: 0.576 | expected: 0.545 | actual: 0.5388298304718682
- * input: -1.393 | expected: -0.984 | actual: -0.9599159914127254
- * input: -1.175 | expected: -0.923 | actual: -0.9284067248382083
- * input: 2.457 | expected: 0.632 | actual: 0.6482541399414217
- * input: -0.462 | expected: -0.446 | actual: -0.4392951432009532
- * input: -0.380 | expected: -0.371 | actual: -0.36987550010885295
- * input: 1.310 | expected: 0.966 | actual: 0.956759640123636
- * input: 0.598 | expected: 0.563 | actual: 0.5558734476992553
- * input: -1.500 | expected: -0.997 | actual: -0.9635348789157572
+ * input: 0.987 | expected: 0.834 | actual: 0.842
+ * input: -1.011 | expected: -0.847 | actual: -0.855
+ * input: -2.731 | expected: -0.399 | actual: -0.451
+ * input: 1.030 | expected: 0.858 | actual: 0.857
+ * input: 3.028 | expected: 0.114 | actual: 0.126
+ * input: 0.187 | expected: 0.186 | actual: 0.188
+ * input: 1.658 | expected: 0.996 | actual: 0.908
+ * input: 1.961 | expected: 0.925 | actual: 0.863
+ * input: 1.218 | expected: 0.938 | actual: 0.899
+ * input: -0.079 | expected: -0.079 | actual: -0.087
  *
  */
 console.log("Testing the neural network...");
 for(let i = 0; i < 10; i++) {
   const x = rnd.next(-Math.PI, Math.PI);
   const result = NN.test([x]);
-  console.log("input:", x.toFixed(3), "| expected:", Math.sin(x).toFixed(3), "| actual:", revert(result));
+  console.log("input:", x.toFixed(3), "| expected:", Math.sin(x).toFixed(3), "| actual:", revert(result).toFixed(3));
 }
 
 

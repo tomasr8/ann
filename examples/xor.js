@@ -14,6 +14,7 @@ const NeuralNetwork = require("../3layer.js");
  * seven neurons in the hidden layer
  * (it is not necessary to have seven, less neurons would work as well)
  * and one output neuron (XOR returns either 1 or 0).
+ * We also set the learning rate to 0.6. (You are free to play with this value)
  */
 let NN = NeuralNetwork(2, 7, 1, 0.6);
 
@@ -22,14 +23,13 @@ let NN = NeuralNetwork(2, 7, 1, 0.6);
  * Here we define our inputs.
  * There are only 4 possible combinations,
  * so it is rather easy.
- * Don't forget that both .input and .expected has to be an Array
- * even if it is only one value.
+ *
  */
 let inputs = [
-  { input: [1, 1], expected: [0] },
-  { input: [1, 0], expected: [1] },
-  { input: [0, 1], expected: [1] },
-  { input: [1, 1], expected: [0] }
+  { input: [1, 1], expected: 0 },
+  { input: [1, 0], expected: 1 },
+  { input: [0, 1], expected: 1 },
+  { input: [1, 1], expected: 0 }
 ];
 
 
@@ -37,7 +37,7 @@ let inputs = [
  * We will give the network 10000 * 4 examples
  * to train on.
  * Note that it is best to alternate the inputs that we give to the network
- * rather than just repeatedly giving it the same input.
+ * rather than just repeatedly give it the same input.
  */
 for (let i = 0; i < 10000; i++) {
   for (let j = 0; j < inputs.length; j++) {
@@ -51,10 +51,10 @@ for (let i = 0; i < 10000; i++) {
  * The result should look like this:
  *
  * Testing the neural network...
- * input: [ 1, 1 ] | output: [ 0.007655196970540926 ]
- * input: [ 1, 0 ] | output: [ 0.9918757893434477 ]
- * input: [ 0, 1 ] | output: [ 0.9925807646447175 ]
- * input: [ 1, 1 ] | output: [ 0.007655196970540926 ]
+ * input: [ 1, 1 ] | output: 0.007655196970540926
+ * input: [ 1, 0 ] | output: 0.9918757893434477
+ * input: [ 0, 1 ] | output: 0.9925807646447175
+ * input: [ 1, 1 ] | output: 0.007655196970540926
  *
  */
 console.log("Testing the neural network...");
