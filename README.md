@@ -52,7 +52,6 @@ for(let i = 0; i < inputs.length; i++) {
 ```
 
 ## Methods
----
 
 ### Constructor: NeuralNetwork(numInputs, numHidden, numOutputs, [ learningRate, [ bias ]])
 
@@ -98,7 +97,8 @@ NN.test(14);
 
 ### .load(file, callback) && .save(file, callback) 
 
-Asynchronously saved or loads the weights of the network.
+Asynchronously saves or loads the weights of the network.
+The saved file is in a json format.
 
 ```javascript
 NN.load("saved.json", err => {
