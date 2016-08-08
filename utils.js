@@ -4,6 +4,7 @@ module.exports = {
   multiply,
   sigma,
   err,
+  isArray,
   Random
 };
 
@@ -73,4 +74,14 @@ function Random(seed) {
     next,
     nextInt
   };
+}
+
+
+/**
+ * Checks whether the argument is an array
+ * @param {Array|number} the tested subject
+ *
+ */
+function isArray(subject) {
+  return Array.isArray(subject);
 }

@@ -1,7 +1,7 @@
 "use strict";
 
 const fs = require("fs");
-const { multiply, sigma, err, Random } = require("./utils.js");
+const { multiply, sigma, err, isArray, Random } = require("./utils.js");
 let rnd = Random(1);
 
 module.exports = NeuralNetwork;
@@ -16,6 +16,7 @@ function NeuralNetwork(numInputs, numHidden, numOutputs, learningRate = 0.5, bia
   let weightsIH = getStartingWeights(numInputs + 1, numHidden);
   let weightsHO = getStartingWeights(numHidden + 1, numOutputs);
 
+
   /**
    * Saves the current weights of the neural network in a json file
    * @param {string} file - the target file
@@ -23,23 +24,33 @@ function NeuralNetwork(numInputs, numHidden, numOutputs, learningRate = 0.5, bia
    */
   function save(file, cb) {
     let data = {
-      //config: [numInputs, numHidden, numOutputs, learningRate, bias],
-      weights: {
-        weightsIH,
-        weightsHO
-      }
+      weightsIH,
+      weightsHO
     };
     fs.writeFile(file, JSON.stringify(data), cb);
+  }
+
+
+  /**
+   * Saves the current weights of the neural network synchronously in a json file
+   * @param {string} file - the target file
+   * @param {function} cb - callback
+   */
+  function saveSync(file) {
+    let data = {
+      weightsIH,
+      weightsHO
+    };
+    fs.writeFileSync(file, JSON.stringify(data));
   }
 
   /**
    * Loads the weights from a json file
    * @param {string} file - the target file
-   * @param {function} cb - callback
    */
   function load(file, cb) {
     fs.readFile(file, (err, data) => {
-      if(err) {
+      if (err) {
         return cb(err);
       }
       data = JSON.parse(data);
@@ -47,6 +58,14 @@ function NeuralNetwork(numInputs, numHidden, numOutputs, learningRate = 0.5, bia
 
       cb();
     });
+  }
+
+  /**
+   * Loads the weights from a json file synchronously
+   * @param {string} file - the target file
+   */
+  function loadSync(file) {
+    ({ weightsIH, weightsHO } = JSON.parse(fs.readFileSync(file)));
   }
 
 
@@ -57,9 +76,7 @@ function NeuralNetwork(numInputs, numHidden, numOutputs, learningRate = 0.5, bia
     let outO = netO.map(c => sigma(c));
 
     return {
-      netH,
       outH,
-      netO,
       outO
     };
   }
@@ -71,23 +88,22 @@ function NeuralNetwork(numInputs, numHidden, numOutputs, learningRate = 0.5, bia
    * @param {Array} data.expected - the expected result
    */
   function train({ input, expected }) {
+    input = isArray(input) ? input : [input];
+    expected = isArray(expected) ? expected : [expected];
 
     const {
-      //  netH,
       outH,
-      //  netO,
       outO
     } = feedForward(input);
 
-    let errors = err(outO, expected);
-
+    const errors = err(outO, expected);
     const totalError = errors.reduce((p, c) => {
       return p + c;
     }, 0);
 
     console.log("total error", totalError);
 
-    let dErrordOutH = [];
+    const dErrordOutH = [];
     for (let i = 0; i < numHidden; i++) {
       let sum = 0;
       for (let j = 0; j < numOutputs; j++) {
@@ -126,20 +142,24 @@ function NeuralNetwork(numInputs, numHidden, numOutputs, learningRate = 0.5, bia
    * @param {Array} input - the test input vector
    */
   function test(input) {
-    return feedForward(input).outO;
+    const result = feedForward(isArray(input) ? input : [input]).outO;
+
+    return result.length === 1 ? result[0] : result;
   }
 
   return {
     train,
     test,
     save,
-    load
+    saveSync,
+    load,
+    loadSync
   };
 }
 
 /**
  * Returns an m x n matrix of random starting weights
- * @private  
+ * @private
  * @param {integer} m - the number of rows
  * @param {integer} n -  the number of columns
  */
