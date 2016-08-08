@@ -1,0 +1,11 @@
+{
+    "name": "ann-js",
+    "description": "3-layer Artificial neural network in vanilla js",
+    "author": "Tomáš Roun <tomas.roun8@gmail.com>",
+    "version": "0.1.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zedpowa/ann.git"
+    },
+    "main": "3layer.js"
+}
