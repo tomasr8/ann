@@ -6,7 +6,7 @@
 "use strict";
 
 const { Random } = require("../utils.js");
-const NeuralNetwork = require("../3layer.js");
+const NeuralNetwork = require("../index.js");
 
 
 /*

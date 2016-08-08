@@ -20,7 +20,7 @@ Teaching the network logical XOR operation:
 
 ```javascript
 // require the network
-const NeuralNetwork = require("./3layer.js");
+const NeuralNetwork = require("ann-js");
 
 // instantiate a network with two inputs, 7 hidden neurons and 1 output
 // set learning rate to 0.6

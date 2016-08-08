@@ -23,7 +23,7 @@
 
 "use strict";
 
-const NeuralNetwork = require("../3layer.js");
+const NeuralNetwork = require("../index.js");
 
 
 /*
