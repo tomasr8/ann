@@ -7,5 +7,6 @@
         "type": "git",
         "url": "https://github.com/zedpowa/ann.git"
     },
+    "license": "MIT",
     "main": "3layer.js"
 }
