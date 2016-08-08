@@ -8,5 +8,12 @@
         "url": "https://github.com/zedpowa/ann.git"
     },
     "license": "MIT",
-    "main": "3layer.js"
+    "main": "3layer.js",
+    "devDependencies": {
+      "mocha": "2.5.0",
+      "chai": "3.5.0"
+    },
+    "script": {
+      "test": "mocha"
+    }
 }
