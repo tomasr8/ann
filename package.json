@@ -10,8 +10,8 @@
     "license": "MIT",
     "main": "3layer.js",
     "devDependencies": {
-      "mocha": "2.5.0",
-      "chai": "3.5.0"
+      "mocha": "^2.5.0",
+      "chai": "^3.5.0"
     },
     "scripts": {
       "test": "mocha"
