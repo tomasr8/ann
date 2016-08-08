@@ -1,5 +1,6 @@
 # ann-js
 Artificial neural network in vanilla JS
+[![Build Status](https://travis-ci.org/zedpowa/ann.svg?branch=master)](https://travis-ci.org/zedpowa/ann)
 ---
 
 This is a 3-layer neural network that uses sigmoid activation function
