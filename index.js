@@ -8,6 +8,7 @@ module.exports = NeuralNetwork;
 
 /**
  * Constructor for the Neural Network
+ * @namespace NeuralNetwork
  * @param {integer} numInputs - number of input neurons
  * @param {integer} numHidden - number of neurons in hidden layer
  * @param {integer} numOutputs - number of output neurons
@@ -19,6 +20,7 @@ function NeuralNetwork(numInputs, numHidden, numOutputs, learningRate = 0.5, bia
 
   /**
    * Saves the current weights of the neural network in a json file
+   * @memberof NeuralNetwork
    * @param {string} file - the target file
    * @param {function} cb - callback
    */
@@ -33,6 +35,7 @@ function NeuralNetwork(numInputs, numHidden, numOutputs, learningRate = 0.5, bia
 
   /**
    * Saves the current weights of the neural network synchronously in a json file
+   * @memberof NeuralNetwork
    * @param {string} file - the target file
    * @param {function} cb - callback
    */
@@ -46,6 +49,7 @@ function NeuralNetwork(numInputs, numHidden, numOutputs, learningRate = 0.5, bia
 
   /**
    * Loads the weights from a json file
+   * @memberof NeuralNetwork
    * @param {string} file - the target file
    */
   function load(file, cb) {
@@ -62,6 +66,7 @@ function NeuralNetwork(numInputs, numHidden, numOutputs, learningRate = 0.5, bia
 
   /**
    * Loads the weights from a json file synchronously
+   * @memberof NeuralNetwork
    * @param {string} file - the target file
    */
   function loadSync(file) {
@@ -83,6 +88,7 @@ function NeuralNetwork(numInputs, numHidden, numOutputs, learningRate = 0.5, bia
 
   /**
    * Feeds the network with the input and backpropagates the error
+   * @memberof NeuralNetwork
    * @param {Object} data - the target file
    * @param {Array} data.input - the input vector
    * @param {Array} data.expected - the expected result
@@ -139,6 +145,7 @@ function NeuralNetwork(numInputs, numHidden, numOutputs, learningRate = 0.5, bia
 
   /**
    * Returns result of a test input
+   * @memberof NeuralNetwork
    * @param {Array} input - the test input vector
    */
   function test(input) {
